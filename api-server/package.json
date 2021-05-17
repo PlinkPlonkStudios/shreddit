@@ -17,6 +17,10 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@mikro-orm/cli": "^4.5.5",
+    "@mikro-orm/core": "^4.5.5",
+    "@mikro-orm/migrations": "^4.5.5",
+    "@mikro-orm/mongodb": "^4.5.5",
     "mongodb": "^3.6.6"
   }
 }
