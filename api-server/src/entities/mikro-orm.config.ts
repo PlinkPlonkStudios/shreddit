@@ -2,7 +2,7 @@ import path from "path";
 import { MikroORM } from "@mikro-orm/core";
 
 import { config } from "../core/config";
-import { Post } from "./Post";
+import { Post } from "./post";
 
 const mikroConfig = {
   // TODO Currently MikroORM has no MongoDB migrations support :/
