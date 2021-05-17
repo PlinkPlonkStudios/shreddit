@@ -1,9 +1,10 @@
-import { ApolloServer } from "apollo-server-express";
-import express from "express";
-import { buildSchema } from "type-graphql";
+import "reflect-metadata";
+import { ApolloServer } from "apollo-server-koa";
 import { MikroORM } from "@mikro-orm/core";
+import { buildSchema } from "type-graphql";
+import Koa from "koa";
 
-import { HelloResolver } from "src/resolvers/hello";
+import { PostResolver } from "../resolvers/post-resolver";
 import mikroConfig from "../entities/mikro-orm.config";
 import { Post } from "../entities/post";
 
@@ -18,13 +19,14 @@ const main = async () => {
   const retrievedPosts = await orm.em.find(Post, {});
   console.log(retrievedPosts);
 
-  const app = express();
+  const app = new Koa();
 
 	const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver],
-      // idate: false,
+      resolvers: [PostResolver],
+      validate: false,
     }),
+    context: () => ({ em: orm.em }),
   });
 
 	apolloServer.applyMiddleware({ app });
