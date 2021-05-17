@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "watch": "tsc -w",
-    "dev": "nodemon dist/index.js",
-    "start": "node dist/index.js",
-    "fake-dev": "nodemon --exec ts-node src/index.ts",
-    "fake-start": "ts-node src/index.ts"
+    "dev": "nodemon dist/core/index.js",
+    "start": "node dist/core/index.js",
+    "fake-dev": "nodemon --exec ts-node src/core/index.ts",
+    "fake-start": "ts-node src/core/index.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -22,5 +22,12 @@
     "@mikro-orm/migrations": "^4.5.5",
     "@mikro-orm/mongodb": "^4.5.5",
     "mongodb": "^3.6.6"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/entities/mikro-orm.config.ts",
+      "./dist/entities/mikro-orm.config.js"
+    ]
   }
 }
