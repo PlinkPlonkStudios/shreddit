@@ -25,13 +25,20 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": [ "src/core/*" ],
+      "@entities/*": [ "src/entities/*" ],
+      "@resolvers/*": [ "src/resolvers/*" ],
+      "@utils/*": [ "src/utils/*" ]
+    }
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
     "./src/**/*.tsx",
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "paths.ts"
   ]
 }
