@@ -4,9 +4,10 @@ import { MikroORM } from "@mikro-orm/core";
 import { buildSchema } from "type-graphql";
 import Koa from "koa";
 
-import { PostResolver } from "../resolvers/post-resolver";
-import mikroConfig from "../entities/mikro-orm.config";
-import { Post } from "../entities/post";
+// import "../../paths";
+import { PostResolver } from "@resolvers/.";
+import mikroConfig from "@entities/mikro-orm.config";
+import { Post } from "@entities/.";
 
 const main = async () => {
   const orm = await MikroORM.init(mikroConfig);

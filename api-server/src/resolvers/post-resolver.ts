@@ -1,8 +1,8 @@
+import { ObjectId } from "mongodb";
 import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 
-import { MyContext } from "../utils";
-import { Post } from "../entities";
-import { ObjectId } from "mongodb";
+import { MyContext } from "@utils/.";
+import { Post } from "@entities/.";
 
 @Resolver()
 export class PostResolver {

@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc -w",
-    "dev": "nodemon dist/core/main.js",
-    "start": "node dist/core/main.js",
-    "fake-dev": "nodemon --exec ts-node src/core/main.ts",
-    "fake-start": "ts-node src/core/main.ts"
+    "watch": "nodemon --watch 'src/**/*' -e ts --exec ts-node -r tsconfig-paths/register ./src/core/main.ts",
+    "build": "tsc",
+    "start": "node -r ts-node/register -r tsconfig-paths/register -r ./tsconfig-paths-bootstrap.js ./dist/core/main.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -27,6 +25,7 @@
     "koa": "^2.13.1",
     "mongodb": "^3.6.6",
     "reflect-metadata": "^0.1.13",
+    "tsconfig-paths": "^3.9.0",
     "type-graphql": "^1.1.1"
   },
   "mikro-orm": {
@@ -35,5 +34,6 @@
       "./src/entities/mikro-orm.config.ts",
       "./dist/entities/mikro-orm.config.js"
     ]
-  }
+  },
+  "baseUrl": "."
 }
