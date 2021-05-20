@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "gen-hmac": "./scripts/generate-hmac-key.sh",
     "watch": "nodemon --watch 'src/**/*' -e ts --exec ts-node -r tsconfig-paths/register ./src/core/main.ts",
     "build": "tsc",
-    "start": "node -r ts-node/register -r tsconfig-paths/register -r ./tsconfig-paths-bootstrap.js ./dist/core/main.js"
+    "start": "node -r ts-node/register -r tsconfig-paths/register -r ./tsconfig-paths-bootstrap.js ./dist/src/core/main.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -21,6 +22,7 @@
     "@mikro-orm/mongodb": "^4.5.5",
     "apollo-server-koa": "^2.24.0",
     "class-validator": "^0.13.1",
+    "crypto-js": "^4.0.0",
     "graphql": "^15.5.0",
     "koa": "^2.13.1",
     "mongodb": "^3.6.6",

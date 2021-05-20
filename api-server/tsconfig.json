@@ -30,6 +30,7 @@
       "@core/*": [ "src/core/*" ],
       "@entities/*": [ "src/entities/*" ],
       "@resolvers/*": [ "src/resolvers/*" ],
+      "@secrets/*": [ "secrets/*" ],
       "@utils/*": [ "src/utils/*" ]
     }
   },

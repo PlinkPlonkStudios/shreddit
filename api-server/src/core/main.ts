@@ -1,10 +1,8 @@
-import "reflect-metadata";
 import { ApolloServer } from "apollo-server-koa";
-import { MikroORM } from "@mikro-orm/core";
-import { buildSchema } from "type-graphql";
 import Koa from "koa";
+import { buildSchema } from "type-graphql";
+import { MikroORM } from "@mikro-orm/core";
 
-// import "../../paths";
 import { PostResolver } from "@resolvers/.";
 import mikroConfig from "@entities/mikro-orm.config";
 import { Post } from "@entities/.";
@@ -13,7 +11,7 @@ const main = async () => {
   const orm = await MikroORM.init(mikroConfig);
 
   // Clear all posts
-  orm.em.nativeDelete(Post, {});
+  await orm.em.nativeDelete(Post, {});
   const postTitles = ["First Cheese", "Second Cheese", "Third Shred"];
   const posts = postTitles.map((title) => orm.em.create(Post, { title }));
   await orm.em.persistAndFlush(posts);
@@ -25,7 +23,6 @@ const main = async () => {
 	const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [PostResolver],
-      validate: false,
     }),
     context: () => ({ em: orm.em }),
   });
