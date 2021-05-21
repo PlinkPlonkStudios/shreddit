@@ -6,7 +6,11 @@
     "gen-hmac": "./scripts/generate-hmac-key.sh",
     "watch": "nodemon --watch 'src/**/*' -e ts --exec ts-node -r tsconfig-paths/register ./src/core/main.ts",
     "build": "tsc",
-    "start": "node -r ts-node/register -r tsconfig-paths/register -r ./tsconfig-paths-bootstrap.js ./dist/src/core/main.js"
+    "start": "node -r ts-node/register -r tsconfig-paths/register -r ./tsconfig-paths-bootstrap.js ./dist/src/core/main.js",
+    "migration:create": "sh -c 'ts-node node_modules/.bin/migrate-mongo create $0 -f ./migrate-mongo-config.ts' ",
+    "migration:status": "ts-node node_modules/.bin/migrate-mongo status -f ./migrate-mongo-config.ts",
+    "migration:undo-last": "ts-node node_modules/.bin/migrate-mongo down -f ./migrate-mongo-config.ts && npm run migrate:status",
+    "migration:apply": "ts-node node_modules/.bin/migrate-mongo up -f ./migrate-mongo-config.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -25,6 +29,7 @@
     "crypto-js": "^4.0.0",
     "graphql": "^15.5.0",
     "koa": "^2.13.1",
+    "migrate-mongo": "^8.2.2",
     "mongodb": "^3.6.6",
     "reflect-metadata": "^0.1.13",
     "tsconfig-paths": "^3.9.0",
